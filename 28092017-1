@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+ 
+struct rational
+{int p;  
+    int q;};
+ 
+rational add(rational r1, rational r2)
+{
+    return rational{ r1.p*r2.q + r2.p*r1.q, r1.q * r2.q };
+}
+ 
+rational sub(rational r1, rational r2)
+{
+    return rational{ r1.p*r2.q - r2.p*r1.q, r1.q * r2.q };
+}
+ 
+rational mul(rational r1, rational r2)
+{
+    return rational{ r1.p * r2.p, r1.q * r2.q };
+}
+ 
+rational div(rational c1, rational c2)
+{
+    return rational{ r1.p * r2.q, r1.q * r2.p };
+}
+ 
+void print (rational r)
+{
+ cout << p << "/" << q;
+}
+ 
+
+int main()
+{return 0;
+}
