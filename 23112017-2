@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+struct node
+{int x;
+node *left, *right;
+};
+
+
+void add(int x, node *&tree)
+{
+
+if (tree == NULL)
+{tree = new node;
+tree->x = x;
+tree->left = tree->right = NULL;}
+
+
+
+else if (tree->x > x)
+{if (tree->left != NULL) 
+add (x, tree->left);
+else
+{tree ->left = new node;
+tree->left->right = tree->left->left = NULL;
+tree->left->x = x;}}
+
+
+else if (tree->x < x)
+{if (tree->right != NULL) 
+add (x, tree->right);
+else
+{tree ->right = new node;
+tree->right->right = tree->right->left = NULL;
+tree->right->x = x;}}
+}
+
+
+
+void dest(node *&tr)
+{
+if (tr != NULL)
+{del(tr->left);
+del(tr->right);
+delete tr;}
+}
+
+
+void find (int y, node *&tr)
+{if (y == x)
+return y;
+if (y > x)
+return find (y, tr->right);
+if (y < x)
+return find (y, tr->left);
+}
+
+voud sum(node *&tr)
+{int sum;
+sum = 0;
+void s(node *&tr)
+{if (tr !=NULL)
+
+{sum = sum + tr->x;
+s(tr->left);
+s(tr->right);}
+}
+}
+
+
+int main()
+{return 0;}
+
+
+
+
+
+
