@@ -1,0 +1,126 @@
+#include <iostream>
+using namespace std;
+
+
+int find(int le, int r, int k, int* arr)
+{int sr;
+sr = arr[le];
+int temp;
+int le1 = le;
+int r1 = r;
+while (le < r)
+{
+while (arr[r] > sr && le < r)
+r--;
+while (arr[le] < sr && le < r)
+le++;
+
+
+if (le <= r)
+
+{temp = arr[le];
+arr[le] = arr[r];
+arr[r] = temp;
+
+if (arr[le] == arr[r] && le != r)
+r--;
+}
+
+}
+
+if (le == k)
+{cout << arr[le];
+return 0;}
+
+if (r == k)
+{cout << arr[r];
+return 0;
+}
+
+if (le > k && r < k)
+find(r + 1, le - 1, k, arr);
+
+if (le > k && r > k)
+find(le1, r - 1, k, arr);
+
+if (le < k)
+find(le + 1, r1, k, arr);
+}
+
+
+
+int main(){
+
+int n, k;
+cin >> n >> k;
+int* array = new int[n];
+for (int i(0); i < n; i++)
+cin >> array[i];
+find(0, (n - 1), k, array);
+
+return 0;
+
+}#include <iostream>
+using namespace std;
+
+
+int find(int le, int r, int k, int* arr)
+{int sr;
+sr = arr[le];
+int temp;
+int le1 = le;
+int r1 = r;
+while (le < r)
+{
+while (arr[r] > sr && le < r)
+r--;
+while (arr[le] < sr && le < r)
+le++;
+
+
+if (le <= r)
+
+{temp = arr[le];
+arr[le] = arr[r];
+arr[r] = temp;
+
+if (arr[le] == arr[r] && le != r)
+r--;
+}
+
+}
+
+if (le == k)
+{cout << arr[le];
+return 0;}
+
+if (r == k)
+{cout << arr[r];
+return 0;
+}
+
+if (le > k && r < k)
+find(r + 1, le - 1, k, arr);
+
+if (le > k && r > k)
+find(le1, r - 1, k, arr);
+
+if (le < k)
+find(le + 1, r1, k, arr);
+}
+
+
+
+int main(){
+
+int n, k;
+cin >> n >> k;
+k = k - 1;
+int* array = new int[n];
+for (int i(0); i < n; i++)
+cin >> array[i];
+find(0, (n - 1), k, array);
+
+return 0;
+
+}
