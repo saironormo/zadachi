@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+struct node {
+int data;
+node *next;
+};
+
+struct queue 
+{node *head = NULL;
+node *tail = NULL;
+
+void push (int new_data)
+{node*temp = new node;
+temp->data=new_data;
+temp->next=NULL;
+
+if (head != NULL)
+{tail->next=temp;
+tail=temp;}
+else head=tail=temp;}
+
+void pop()
+{node *temp = head;
+cout << head->data << endl;
+head = head->next;
+delete temp;}
+
+
+
+
+
+queue() {
+while (head != NULL)
+{node *temp = head;
+head = head->next;
+delete temp;}
+}
+};
+
+
+
+
+int main()
+{return 0;}
