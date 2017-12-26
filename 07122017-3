@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+
+struct node {
+int k, pr, v;
+node *l, *r;
+node (int key, int value)
+{k = key;
+v = value;
+pr = rand();
+l = NULL;
+r = NULL;
+}
+};
+
+node *merge (node *a, node *b) 
+{
+
+if (!a || !b)
+{if (a) 
+{return a;}
+else return b;
+
+if (a->p > b->p) 
+{a->r = merge(a->r, b);
+return a;} 
+else 
+{b->l = merge(a, b->l);
+return b;}
+
+}
+
+
+void split(node *t, int k, node *&a, node *&b) 
+{
+if (!t)
+a = NULL;
+b = NULL;
+else if (t->k < k)
+{split(t->r, k, t->r, b);
+a = t;}
+else 
+{split(t->l, k, a, t->l);
+b = t;}
+}
+
+void add(int key, int value) 
+{
+node *tn = new node(key, value), *t1, *t2;
+split(t, key, t1, t2);
+t = merge(t1, tn);
+t = merge(t, t2);
+}
+
+void del (int key) 
+{
+node *t1, *t2, *t3;
+split(t, key, t1, t2);
+split(t2, key + 1, t2, t3);
+t = merge(t1, t3);
+}
+
+int find(int key) 
+{
+int f = 0;
+node *t1, *t2, *t3;
+split(t, key, t1, t2);
+split(t2, key + 1, t2, t3);
+if (t2 != NULL)
+f = t2->v;
+t1 = merge(t1, t2);
+t = merge(t1, t3);
+return f;
+}
+
+
+
+int main()
+{
+
+return 0;
+}
