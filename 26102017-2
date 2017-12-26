@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+int f (int n) // по теореме Лагранжа о сумме четырёх квадратов всякое натуральное число можно представить в виде суммы четырех квадратов целых чисел
+
+{for (int i = 1; i*i <= n; i++)
+if (i*i == n)
+{cout << i*i;
+return 0;}
+
+for (int i = 1; i*i<=n; i++)
+for (int j = 1; j*j <=n; j++)
+if (i*i + j*j == n)
+{cout << i*i << "+" << j*j;
+return 0;}
+
+for (int i = 1; i*i<=n; i++)
+for (int j = 1; j*j <=n; j++)
+for (int k = 1; k*k <=n; k++)
+if (i*i + j*j + k*k == n)
+{cout << i*i << "+" << j*j << "+" << k*k;
+return 0;}
+
+for (int i = 1; i*i<=n; i++)
+for (int j = 1; j*j <=n; j++)
+for (int k = 1; k*k <=n; k++)
+for (int l = 1; l*l<=n; l++)
+if (i*i + j*j + k*k + l*l == n)
+{cout << i*i << "+" << j*j << "+" << k*k << "+" << l*l;
+return 0;}
+
+}
+
+int main ()
+{int n;
+cin >> n;
+f(n);
+
+return 0;
+}
+{cout << i*i << "+" << j*j << "+" << k*k << "+" << l*l;
+return 0;}
+
+}
+
+int main ()
+{int n;
+cin >> n;
+f(n);
+
+return 0;
+}
