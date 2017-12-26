@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+int cy (int r, int m, int t, int p, int c)
+{
+if (t == 1)
+	return r;
+
+else {
+int i;
+i = 1;
+int t1;
+t1 = t;
+while (t*t != 1)
+{t = t*t%p;
+i++; }
+
+   
+int b;
+b = c;
+for (int j = 0; j < (m - i - 1); j++)
+b = b*b%p;
+r = r*b%p;
+m = i;
+t = t1*b*b%p;
+c = b*b%p;
+return cy (r, m, t, p, c);
+};
+
+}
+
+
+
+
+int main ()
+{int p, n, z;
+cin >> p >> n >> z;
+int q;
+q = p - 1;
+int s1, s2;
+s2 = 1;
+s1 = 0;
+while (q%2 == 0)
+{q = q/2;
+s2 = s2*2;
+s1++;}
+q = p/s2;
+int r;
+r = 1;
+for (int i = 0; i < (q+1)/2; i++)
+r = r*n%p;
+int t;
+t = 1;
+for (int i = 0; i < q; i++)
+t = t*n%p;
+int m;
+m = s1;
+int c;
+c = 1;
+for (int j = 0; j < q; j++)
+c = c*z%p;
+int k;
+k =  cy (r, m, t, p, c);
+
+cout << "+-" << k;
+
+
+}
