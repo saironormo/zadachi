@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+
+
+void qus(int le, int r, int* arra, int* arrb)
+{
+int sr;
+sr = arrb[le];
+int temp;
+
+int le1 = le;
+int r1 = r;
+
+while (le < r)
+{
+while (arrb[le] < sr)
+le++;
+while (arrb[r] > sr)
+r--;
+if (le <= r)
+{temp = arrb[le];
+arrb[le] = arrb[r];
+arrb[r] = temp;
+temp = arra[le];
+arra[le] = arra[r];
+arra[r] = temp;
+le++;
+r--;
+}
+}
+
+if (le1 < r)
+qus(le1, r, arra, arrb);
+if (le < r1)
+qus(le, r1, arra, arrb);
+}
+
+
+
+int main ()
+{int n;
+cin >> n;
+int *arra = new int [n];
+int *arrb = new int [n];
+for (int i = 0; i < n; i++)
+{ cin >> arra[i] >> arrb[i];}
+qus (0, n-1, arra, arrb);
+int temp;
+
+
+temp = arrb[0];
+cout << arra[0] << arrb[0] << endl;
+for (int i = 1; i < n; i++)
+{if (arra[i] >= temp)
+{temp = arrb[i];
+cout << arra[i] << arrb[i] << endl;}
+}
+
+
+return 0;
+
+}
