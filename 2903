@@ -1,0 +1,75 @@
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <map>
+#include <algorithm>
+
+using namespace std;
+ 
+int main()
+{
+map <string, int> words;
+ifstream textfile("C:\\123\\textfile.txt");
+string s, s1;
+s.clear();
+while (!textfile.eof())
+    {
+        if (textfile.eof()) break;
+        textfile >>  s1;
+		s = s+s1+" ";
+		if (s1.find(".") != std::string::npos)
+		{s1.erase(s1.length()-1);}
+		if (s1.find(",") != std::string::npos)
+		{s1.erase(s1.length()-1);}
+		if (s1.find(":") != std::string::npos)
+		{s1.erase(s1.length()-1);}
+		if (s1.find("!") != std::string::npos)
+		{s1.erase(s1.length()-1);}
+		if (s1.find("?") != std::string::npos)
+		{s1.erase(s1.length()-1);}
+		 transform(s1.begin(), s1.end(), s1.begin(), toupper);
+
+		if (s1 != "—")
+		words[s1]++;
+    }
+textfile.close();
+
+ 	cout << endl;
+ map <string,int>::iterator a;
+
+ for (a = words.begin(); a != words.end(); a++)
+ {cout << (*a).first << "=" << (*a).second  <<endl;
+ }
+
+ 
+int count;
+count = 0;
+for (int c = 65; c < 123; c++)
+{
+
+for(int i = 0; i < s.length(); i++)
+{
+if ( s[i] == char(c))
+{count++;}
+
+}
+cout << char(c) << " = " << count << endl;
+count = 0;
+if (c == 90)
+	c = 96;
+}
+
+
+
+cout << "Kakoe slovo najti?";
+cin >> s1;
+
+if (s.find(s1) == std::string::npos)
+cout << "Net takogo slova.";
+else
+cout << s.substr(s.find(s1));
+
+
+        return 0;
+}
